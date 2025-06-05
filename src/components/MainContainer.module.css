@@ -1,0 +1,23 @@
+.mainContainer {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    width: 75%;
+    height: 50rem;
+    border: solid 2px ;
+    border-image:linear-gradient(to right, #2176D4, #79b0f0);
+    border-image-slice: 1;
+}
+
+/**~~~~~ Title ~~~~~**/
+
+.title {
+    display: flex;
+    font-size: 50px;
+    background: linear-gradient(to right, #2176D4, #79b0f0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline double 2px #2176D4;
+}
+
