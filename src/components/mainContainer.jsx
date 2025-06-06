@@ -1,12 +1,9 @@
-import React from 'react'
+import { React, useState, useEffect, use} from 'react'
 import styles from './MainContainer.module.css'
 import TextArea from './textArea.jsx'
 
 export default function MainContainer() {
 
-
-
-  
 
   return (
     <div className={styles.mainContainer}>
