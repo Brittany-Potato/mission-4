@@ -30,9 +30,12 @@ export default function TextArea() {
         setResponse(data.message);
         console.log(data);
       });
-
-      
   };
+
+
+
+
+
 
 
   return (
@@ -41,9 +44,7 @@ export default function TextArea() {
         <textarea
           name="Response and history"
           className={styles.textArea}
-          onChange={(e) => {setText(e.target.value);
-            setResponse(e.target.value);
-          }} 
+          onChange={(e) => {setText + response}} 
           value={text + response}
         ></textarea>
       </div>
