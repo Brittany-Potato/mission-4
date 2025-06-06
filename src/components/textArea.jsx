@@ -5,19 +5,30 @@ export default function TextArea() {
   const [text, setText] = useState("");
   const [response, setResponse] = useState("");
 
+  const [lines, setLines] = useState([]);
+
   //*~~~~ GET Request ~~~~~
 
   useEffect(() => {
     fetch("http://localhost:4000/quote")
       .then((res) => res.json())
       .then((data) => {
-        setResponse(data.message)
+        setResponse(data.message);
       });
   }, []);
+
+//*~~~~~ Handle Input Change ~~~~~
+
+  const handleInputChange = (e) => {
+    setText(e.target.value);
+  };
+
+
 
   //*~~~~~ POST Request ~~~~~
 
   const handleSubmit = () => {
+    setLines((prevLines) => [...prevLines, text]);
     fetch("http://localhost:4000/quote", {
       method: "POST",
       headers: {
@@ -30,11 +41,8 @@ export default function TextArea() {
         setResponse(data.message);
         console.log(data);
       });
+      setText("");
   };
-
-
-
-
 
 
 
@@ -44,8 +52,11 @@ export default function TextArea() {
         <textarea
           name="Response and history"
           className={styles.textArea}
-          onChange={(e) => {setText + response}} 
-          value={text + response}
+          onChange={(e) => {
+            setText + response;
+          }}
+          value={[...lines, response].join("\n")} 
+          readOnly
         ></textarea>
       </div>
       <div className={styles.submitButtonDiv}>
@@ -57,7 +68,8 @@ export default function TextArea() {
         <input
           type="text"
           className={styles.textBox}
-          onChange={(e) => setText(e.target.value)}
+          onChange={handleInputChange}
+          value={text}
         />
       </div>
     </div>
