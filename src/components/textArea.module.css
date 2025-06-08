@@ -1,3 +1,7 @@
+
+
+
+
 /**~~~~~ Text Area ~~~~~**/
 
 .textAreaDiv {
@@ -16,7 +20,25 @@
   border-image: linear-gradient(to right, #2176d4, #79b0f0);
   border-image-slice: 1;
   width: 100%;
+  color: #2176d4;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 100;
+  transition: ease-in-out 3s;
+  justify-content: center;
+  transition: ease-in-out 3s;
+  background-color: white;
 }
+
+.textArea:hover {
+  background-color: rgb(179, 176, 176);
+  color: white;
+  transition: ease-in-out 3s;
+} 
+
+.textArea:hover {
+  font-weight: bold;
+}
+
 
 /**~~~~~ Buttons ~~~~~**/
 
@@ -28,8 +50,18 @@
   position: relative;
   top: 300px;
   left: 69%;
-  background-image: linear-gradient(to right, #2176d4, #79b0f0);
   border: 2px solid #79b0f0;
+  color: #2176D4;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 3s;
+  background-color: white;
+}
+
+.submitButton:hover {
+  background-color: rgb(179, 176, 176);
+  color: white;
+  transition: ease-in-out 3s;
 }
 
 /**~~~~~ Text Box ~~~~~**/

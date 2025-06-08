@@ -1,14 +1,23 @@
 import { React, useState, useEffect } from "react";
 import styles from "./textArea.module.css";
 
+export function getRecommendation(message) {
+          // Getting the recommended insurance plan
+        const match = message.match(/recommend(?:ed)?:?\s*(Mechanical Breakdown Insurance|Comprehensive Car Insurance|Third Party Car Insurance)/i);
+        return match ? match[1] : "";
+}
+
+
 // Main TextArea component
-export default function TextArea() {
+export default function TextArea(props) {
   // State for the input text box
   const [text, setText] = useState("");
   // State for the latest AI response (not directly used in UI)
   const [response, setResponse] = useState("");
   // State for the conversation history (array of user/AI messages)
   const [conversation, setConversation] = useState([]);
+  // State for the final recommendation
+  const [recommendation, setRecommendation] = useState("")
 
   // Fetch initial data from backend on mount (optional, can be used for greeting)
   useEffect(() => {
@@ -56,6 +65,11 @@ export default function TextArea() {
       .then((data) => {
         // Add the AI's response to the conversation array
         setConversation((prev) => [...prev, `AI: ${data.message}`]);
+        const rec = getRecommendation(data.message);
+        if (rec && props.setRecommendation) {
+          props.setRecommendation(rec)
+        }
+
         console.log(data); // Log the backend response for debugging
       });
     setText(""); // Clear the input box after sending
@@ -64,6 +78,7 @@ export default function TextArea() {
   return (
     <div>
       {/* Text area showing the conversation history */}
+
       <div className={styles.textAreaDiv}>
         <textarea
           name="Response and history"
