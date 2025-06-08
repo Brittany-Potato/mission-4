@@ -80,13 +80,17 @@ export default function TextArea(props) {
       {/* Text area showing the conversation history */}
 
       <div className={styles.textAreaDiv}>
-        <textarea
+        <div
           name="Response and history"
           className={styles.textArea}
           // Display the conversation, each message on a new line
           value={conversation.join("\n")}
           readOnly
-        ></textarea>
+        >{conversation.map((line, idx) => (
+          <div key ={idx} className={styles.line}>
+            {line}
+          </div>
+        ))}</div>
       </div>
       {/* Submit button */}
       <div className={styles.submitButtonDiv}>
@@ -106,3 +110,6 @@ export default function TextArea(props) {
     </div>
   );
 }
+
+
+

@@ -8,7 +8,6 @@
   display: flex;
   width: 50vw;
   height: 50%;
-  background-color: aqua;
   justify-content: flex-start / center / flex-end;
   position: relative;
   top: 30%;
@@ -27,18 +26,20 @@
   justify-content: center;
   transition: ease-in-out 3s;
   background-color: white;
+  max-height: 100%;
+  overflow-y: scroll;
 }
 
-.textArea:hover {
-  background-color: rgb(179, 176, 176);
-  color: white;
-  transition: ease-in-out 3s;
-} 
-
-.textArea:hover {
-  font-weight: bold;
+.line {
+  background-color: transparent;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: #2176D4 solid 2px;
+  border-radius: 0px 50px 50px 0px;
+  border-right: none;
+  border-left: none;
+  padding: 10px;
 }
-
 
 /**~~~~~ Buttons ~~~~~**/
 
