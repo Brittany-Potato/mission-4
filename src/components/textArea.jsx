@@ -4,8 +4,7 @@ import styles from "./textArea.module.css";
 export default function TextArea() {
   const [text, setText] = useState("");
   const [response, setResponse] = useState("");
-
-  const [lines, setLines] = useState([]);
+  const [conversation, setConversation] = useState([]);
 
   //*~~~~ GET Request ~~~~~
 
@@ -17,34 +16,43 @@ export default function TextArea() {
       });
   }, []);
 
-//*~~~~~ Handle Input Change ~~~~~
+  //*~~~~~ Handle Input Change ~~~~~
 
   const handleInputChange = (e) => {
     setText(e.target.value);
   };
 
-
-
   //*~~~~~ POST Request ~~~~~
 
   const handleSubmit = () => {
-    setLines((prevLines) => [...prevLines, text]);
+    const updatedConversation = [...conversation, `user: ${text}`];
+    setConversation(updatedConversation);
+
+    const mappedConversation = updatedConversation
+      .map((msg) => {
+        if (msg.startsWith("user: ")) {
+          return { role: "user", parts: [{ text: msg.replace("user: ", "") }] };
+        } else if (msg.startsWith("AI: ")) {
+          return { role: "model", parts: [{ text: msg.replace("AI: ", "") }] };
+        }
+        return null;
+      })
+      .filter(Boolean);
+
     fetch("http://localhost:4000/quote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: text }),
+      body: JSON.stringify({ conversation: mappedConversation }),
     })
       .then((res) => res.json())
       .then((data) => {
-        setResponse(data.message);
+        setConversation((prev) => [...prev, `AI: ${data.message}`]);
         console.log(data);
       });
-      setText("");
+    setText("");
   };
-
-
 
   return (
     <div>
@@ -52,10 +60,10 @@ export default function TextArea() {
         <textarea
           name="Response and history"
           className={styles.textArea}
-          onChange={(e) => {
-            setText + response;
-          }}
-          value={[...lines, response].join("\n")} 
+          // onChange={(e) => {
+          //   setText + response;
+          // }}
+          value={conversation.join("\n")}
           readOnly
         ></textarea>
       </div>
