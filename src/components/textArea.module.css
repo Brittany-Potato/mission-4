@@ -33,14 +33,14 @@
   min-height: 0;
 }
 
+
 .line {
   background-color: transparent;
   margin-top: 15px;
   margin-bottom: 15px;
-  /* border: #2176D4 solid 2px; */
-  border-radius: 0px 50px 50px 0px;
+  border: #2176D4 solid 2px;
+  border-radius: 0px 0px 50px 0px;
   border-right: none;
-  border-left: none;
   padding: 10px;
 }
 

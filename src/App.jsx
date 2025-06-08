@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import './App.css'
-import MainContainer from './components/mainContainer';
+import { useState } from "react";
+import styles from "./app.module.css"
+import MainContainer from "./components/mainContainer";
 
 function App() {
-
   return (
     <>
-    
-      <MainContainer/>
+      <div className={styles.body}>
+        <div className={styles.background}>
+          <MainContainer />
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
