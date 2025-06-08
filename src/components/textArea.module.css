@@ -12,13 +12,14 @@
   position: relative;
   top: 30%;
   right: 11%;
+  background-color: yellow;
 }
 
 .textArea {
   border: solid 2px;
   border-image: linear-gradient(to right, #2176d4, #79b0f0);
   border-image-slice: 1;
-  width: 100%;
+  min-width: 0;
   color: #2176d4;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 100;
@@ -26,15 +27,17 @@
   justify-content: center;
   transition: ease-in-out 3s;
   background-color: white;
-  max-height: 100%;
+  height: 100%;
+  width: 100%;
   overflow-y: scroll;
+  min-height: 0;
 }
 
 .line {
   background-color: transparent;
   margin-top: 15px;
   margin-bottom: 15px;
-  border: #2176D4 solid 2px;
+  /* border: #2176D4 solid 2px; */
   border-radius: 0px 50px 50px 0px;
   border-right: none;
   border-left: none;
