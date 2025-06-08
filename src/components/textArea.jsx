@@ -1,44 +1,50 @@
 import { React, useState, useEffect } from "react";
 import styles from "./textArea.module.css";
 
+// Main TextArea component
 export default function TextArea() {
+  // State for the input text box
   const [text, setText] = useState("");
+  // State for the latest AI response (not directly used in UI)
   const [response, setResponse] = useState("");
+  // State for the conversation history (array of user/AI messages)
   const [conversation, setConversation] = useState([]);
 
-  //*~~~~ GET Request ~~~~~
-
+  // Fetch initial data from backend on mount (optional, can be used for greeting)
   useEffect(() => {
     fetch("http://localhost:4000/quote")
       .then((res) => res.json())
       .then((data) => {
-        setResponse(data.message);
+        setResponse(data.message); // Store initial message if needed
       });
   }, []);
 
-  //*~~~~~ Handle Input Change ~~~~~
-
+  // Update the input text state as the user types
   const handleInputChange = (e) => {
     setText(e.target.value);
   };
 
-  //*~~~~~ POST Request ~~~~~
-
+  // Handle submit button click
   const handleSubmit = () => {
+    // Add the user's message to the conversation array
     const updatedConversation = [...conversation, `user: ${text}`];
     setConversation(updatedConversation);
 
+    // Map the conversation array to the format expected by the backend/AI
     const mappedConversation = updatedConversation
       .map((msg) => {
         if (msg.startsWith("user: ")) {
+          // User message format
           return { role: "user", parts: [{ text: msg.replace("user: ", "") }] };
         } else if (msg.startsWith("AI: ")) {
+          // AI message format
           return { role: "model", parts: [{ text: msg.replace("AI: ", "") }] };
         }
-        return null;
+        return null; // Ignore any lines that don't match
       })
-      .filter(Boolean);
+      .filter(Boolean); // Remove nulls
 
+    // Send the mapped conversation to the backend
     fetch("http://localhost:4000/quote", {
       method: "POST",
       headers: {
@@ -48,30 +54,32 @@ export default function TextArea() {
     })
       .then((res) => res.json())
       .then((data) => {
+        // Add the AI's response to the conversation array
         setConversation((prev) => [...prev, `AI: ${data.message}`]);
-        console.log(data);
+        console.log(data); // Log the backend response for debugging
       });
-    setText("");
+    setText(""); // Clear the input box after sending
   };
 
   return (
     <div>
+      {/* Text area showing the conversation history */}
       <div className={styles.textAreaDiv}>
         <textarea
           name="Response and history"
           className={styles.textArea}
-          // onChange={(e) => {
-          //   setText + response;
-          // }}
+          // Display the conversation, each message on a new line
           value={conversation.join("\n")}
           readOnly
         ></textarea>
       </div>
+      {/* Submit button */}
       <div className={styles.submitButtonDiv}>
         <button className={styles.submitButton} onClick={handleSubmit}>
           Submit Button
         </button>
       </div>
+      {/* Input box for user to type their message */}
       <div>
         <input
           type="text"
