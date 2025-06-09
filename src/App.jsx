@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./app.module.css"
+import styles from "./App.module.css"
 import MainContainer from "./components/mainContainer";
 
 function App() {

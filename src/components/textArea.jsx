@@ -2,11 +2,12 @@ import { React, useState, useEffect } from "react";
 import styles from "./textArea.module.css";
 
 export function getRecommendation(message) {
-          // Getting the recommended insurance plan
-        const match = message.match(/recommend(?:ed)?:?\s*(Mechanical Breakdown Insurance|Comprehensive Car Insurance|Third Party Car Insurance)/i);
-        return match ? match[1] : "";
+  // Getting the recommended insurance plan
+  const match = message.match(
+    /recommend(?:ed)?:?\s*(Mechanical Breakdown Insurance|Comprehensive Car Insurance|Third Party Car Insurance)/i
+  );
+  return match ? match[1] : "";
 }
-
 
 // Main TextArea component
 export default function TextArea(props) {
@@ -17,7 +18,7 @@ export default function TextArea(props) {
   // State for the conversation history (array of user/AI messages)
   const [conversation, setConversation] = useState([]);
   // State for the final recommendation
-  const [recommendation, setRecommendation] = useState("")
+  const [recommendation, setRecommendation] = useState("");
 
   // Fetch initial data from backend on mount (optional, can be used for greeting)
   useEffect(() => {
@@ -67,7 +68,7 @@ export default function TextArea(props) {
         setConversation((prev) => [...prev, `AI: ${data.message}`]);
         const rec = getRecommendation(data.message);
         if (rec && props.setRecommendation) {
-          props.setRecommendation(rec)
+          props.setRecommendation(rec);
         }
 
         console.log(data); // Log the backend response for debugging
@@ -78,29 +79,31 @@ export default function TextArea(props) {
   return (
     <div>
       {/* Text area showing the conversation history */}
-
-<div className={styles.textAreaDiv}>
-  <div className={styles.textArea}>
-    {conversation.length === 0 ? (
-      <div style={{ color: "#ccc", padding: "10px" }}>No messages yet...</div>
-    ) : (
-      conversation.map((line, idx) => (
-        <div
-          key={idx}
-          className={styles.line}
-          style={{
-            width: `${Math.min(30 + line.length * 8, 700)}px`,
-            border: "2px solid #2176D4",
-              borderRadius: '0px 50px 50px 0px',
-            margin: "15px 0",
-          }}
-        >
-          {line}
+      <div className={styles.textAreaDiv}>
+        <div className={styles.textArea}>
+          {conversation.length === 0 ? (
+            <div style={{ color: "#ccc", padding: "10px" }}>
+              No messages yet...
+            </div>
+          ) : (
+            conversation.map((line, idx) => (
+              <div
+                key={idx}
+                className={styles.line}
+                style={{
+                  width: `${Math.min(30 + line.length * 8, 700)}px`,
+                  border: "2px solid #2176D4",
+                  borderRadius: "0px 50px 50px 0px",
+                  margin: "15px 0",
+                }}
+              >
+                {line}
+              </div>
+            ))
+          )}
         </div>
-      ))
-    )}
-  </div>
-</div>      {/* Submit button */}
+      </div>{" "}
+      {/* Submit button */}
       <div className={styles.submitButtonDiv}>
         <button className={styles.submitButton} onClick={handleSubmit}>
           Submit Button
@@ -118,6 +121,3 @@ export default function TextArea(props) {
     </div>
   );
 }
-
-
-
