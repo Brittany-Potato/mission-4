@@ -3,29 +3,41 @@
   justify-self: center;
   justify-content: center;
   width: 60vw;
-  height: 90vh;
+  height: 100vh;
   border: solid 2px;
   border-image: linear-gradient(to right, #2176d4, #79b0f0);
   border-image-slice: 1;
   position: relative;
-  background-color: rgb(186, 209, 243);
+  background-color: #2074CA;
 }
 
+
 /**~~~~~ Title ~~~~~**/
+
 
 .title {
   display: flex;
   font-size: 50px;
-  background: linear-gradient(to right, #2176d4, #79b0f0);
+  position: relative;
+  left: 46%;
+  width: 350%;
+  top: 6%;
+  border: #79b0f0 solid 2px;
+  justify-content: center;
+  padding: 3px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.gradientText {
+  border: solid 4px;
+  border-image: linear-gradient(to right, #7eb0e9, #c9dff7);
+  border-image-slice: 1;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-decoration: underline double 2px #2176d4;
-  position: relative;
-  left: 100%;
-  width: 400%;
+  font-size: 60px;
 }
-
 /**~~~~~ Recommendation ~~~~~**/
 
 .recommendationBox {

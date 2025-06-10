@@ -4,21 +4,22 @@ import TextArea from "./textArea.jsx";
 import { getRecommendation } from "./textArea.jsx";
 
 export default function MainContainer() {
-
-    const [recommendation, setRecommendation] = useState("")
-
+  const [recommendation, setRecommendation] = useState("");
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleDiv}>
-        <h1 className={styles.title}>Turners Insurance - Get a Quote</h1>
-{recommendation && (
-  <div className={styles.recommendationBox}>
-    <strong>Recommended Plan: {recommendation}</strong> 
-  </div>
-)}      </div>
-      <TextArea setRecommendation={setRecommendation}/>
+        <div className={styles.title}>
+          {" "}
+          <h1 className={styles.gradientText}>Turners Insurance - Get a Quote</h1>
+        </div>
+        {recommendation && (
+          <div className={styles.recommendationBox}>
+            <strong>Recommended Plan: {recommendation}</strong>
+          </div>
+        )}{" "}
+      </div>
+      <TextArea setRecommendation={setRecommendation} />
     </div>
-    
   );
 }
