@@ -2,6 +2,8 @@
 
 The Mission brief was to create a generative AI application turners could use to provide car insurance assesments to clients.
 
+This App was made by Brittany Cahill - Carnaby.
+
 ## ~~~ Installs
 
 - React
