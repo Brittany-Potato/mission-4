@@ -83,7 +83,7 @@ export default function TextArea(props) {
         <div className={styles.textArea}>
           {conversation.length === 0 ? (
             <div style={{ color: "#ccc", padding: "10px" }}>
-              No messages yet...
+              Write something in the input box bellow to begin your assessment ..
             </div>
           ) : (
             conversation.map((line, idx) => (

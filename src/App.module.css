@@ -2,6 +2,8 @@
   background-color: lightgray;
   height: 100vh;
   width: 100vw;
+  position: relative;
+  overflow: hidden;  
 }
 
 .background {
@@ -13,5 +15,6 @@
   left: 15%;
   justify-content: center;
   border: grey solid 2px;
+  bottom: 0%;
 }
 

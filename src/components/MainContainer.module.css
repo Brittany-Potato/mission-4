@@ -8,12 +8,17 @@
   border-image: linear-gradient(to right, #2176d4, #79b0f0);
   border-image-slice: 1;
   position: relative;
-  background-color: #2074CA;
+  background-color: #2074ca;
+  border: solid 4px;
+  border-image: linear-gradient(to right, #7eb0e9, #c9dff7);
+  border-image-slice: 1;
+  border: solid 4px;
+  border-image: linear-gradient(to right, #7eb0e9, #c9dff7);
+  border-image-slice: 1;
+  top: 0%;
 }
 
-
 /**~~~~~ Title ~~~~~**/
-
 
 .title {
   display: flex;
@@ -26,13 +31,13 @@
   justify-content: center;
   padding: 3px;
   background-color: white;
-  border-radius: 15px;
+  border: solid 4px #7eb0e9;
+  border-radius: 15px 15px 15px 15px;
+  font-family: "Roboto", sans-serif;
 }
 
 .gradientText {
-  border: solid 4px;
-  border-image: linear-gradient(to right, #7eb0e9, #c9dff7);
-  border-image-slice: 1;
+  background: linear-gradient(to right, #7eb0e9, #c9dff7); /* Add this line */
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

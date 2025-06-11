@@ -1,12 +1,60 @@
-# React + Vite
+# ~~~ Mission 4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Mission brief was to create a generative AI application turners could use to provide car insurance assesments to clients.
 
-Currently, two official plugins are available:
+## ~~~ Installs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- React DOM
 
-## Expanding the ESLint configuration
+## ~~~ Running
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- To run the frontend: npm run dev
+
+- To run the backend: node server.js
+
+- To run w/Docker: Docker compose up --build
+
+## ~~~ Components in the frontend
+
+- App.jsx & App.module.CSS
+  Base page of the project and where the line of components end
+
+- mainContainer.jsx & MainContainer.module.css
+  The container/s surrounding the main AI chatbot
+
+- textArea.jsx & textArea.module.css
+  Main functions and AI chatbot container
+
+## ~~~ Folder structure
+
+```
+MISSION-4/
+├── .vscode/
+├── dist/
+├── node_modules/
+├── public/
+│   └── images/
+│       ├── turners.png
+│       └── vite.svg
+├── src/
+│   ├── assets/
+│   └── components/
+│       ├── mainContainer.jsx
+│       ├── MainContainer.module.css
+│       ├── textArea.jsx
+│       └── textArea.module.css
+│   ├── App.jsx
+│   ├── App.module.css
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── build.log
+├── Dockerfile
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
+```
