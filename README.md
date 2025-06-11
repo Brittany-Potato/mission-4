@@ -16,6 +16,7 @@ This App was made by Brittany Cahill - Carnaby.
 - To run the backend: node server.js
 
 - To run w/Docker: Docker compose up --build
+Ensure you are in the correct directory .. Mission 4 main not mission 4(Frontend)
 
 ## ~~~ Components in the frontend
 
